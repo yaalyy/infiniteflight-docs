@@ -1,0 +1,12 @@
+title: Infinite Flight 中文文档
+description: Infinite Flight 中文翻译文档
+lang: zh-CN
+theme: jekyll-theme-primer
+include:
+  - _images
+  - atc-guide/_radar
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
