@@ -5,6 +5,7 @@ theme: jekyll-theme-primer
 include:
   - _images
   - atc-guide/_radar
+  - scenery-editor-manual/11.-airport-gates/_11.1-gate-equipment-placement.md
 defaults:
   - scope:
       path: ""
