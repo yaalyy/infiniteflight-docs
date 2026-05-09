@@ -28,12 +28,15 @@ jobs:
         with:
           source: ./zh-docs
           destination: ./_site
-      - name: Copy static images to site output
-        run: cp -R _images ./_site/_images
+      - name: Assemble deploy artifact
+        run: |
+          mkdir -p ./site-output
+          cp -R ./_site/. ./site-output/
+          cp -R _images ./site-output/_images
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./site-output
 
   deploy:
     environment:
