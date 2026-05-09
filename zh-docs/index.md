@@ -8,70 +8,35 @@ permalink: /
 这是中文文档站点的导航页。点击下方各个 guide 可以展开查看 section 和具体页面。
 
 {% assign sorted_pages = site.pages | sort: "path" %}
-{% assign guides = "getting-started-guide|flying-guide|atc-guide|atc-manual|developer-reference|get-help|scenario-editor-manual|scenery-editor-manual|legal" | split: "|" %}
 
 <p>
   快速跳转:
-  {% for guide in guides %}
-    {% capture guide_index_path %}{{ guide }}/index.md{% endcapture %}
-    {% capture guide_meta_path %}{{ guide }}/_meta.md{% endcapture %}
-    {% assign guide_index = sorted_pages | where: "path", guide_index_path | first %}
-    {% assign guide_meta = sorted_pages | where: "path", guide_meta_path | first %}
-    {% assign guide_title = guide_meta.title | default: guide_index.title %}
-    {% if guide_title == nil %}
-      {% case guide %}
-        {% when "legal" %}
-          {% assign guide_title = "法律" %}
-        {% else %}
-          {% assign guide_title = guide %}
-      {% endcase %}
-    {% endif %}
-    <a href="#{{ guide }}">{{ guide_title }}</a>{% unless forloop.last %} | {% endunless %}
+  {% for guide in site.data.navigation.guides %}
+    <a href="#{{ guide.slug }}">{{ guide.title }}</a>{% unless forloop.last %} | {% endunless %}
   {% endfor %}
 </p>
 
-{% for guide in guides %}
-  {% capture guide_index_path %}{{ guide }}/index.md{% endcapture %}
-  {% capture guide_meta_path %}{{ guide }}/_meta.md{% endcapture %}
+{% for guide in site.data.navigation.guides %}
+  {% capture guide_index_path %}{{ guide.slug }}/index.md{% endcapture %}
   {% assign guide_index = sorted_pages | where: "path", guide_index_path | first %}
-  {% assign guide_meta = sorted_pages | where: "path", guide_meta_path | first %}
-  {% assign guide_title = guide_meta.title | default: guide_index.title %}
-  {% if guide_title == nil %}
-    {% case guide %}
-      {% when "legal" %}
-        {% assign guide_title = "法律" %}
-      {% else %}
-        {% assign guide_title = guide %}
-    {% endcase %}
-  {% endif %}
 
-  <div id="{{ guide }}"></div>
+  <div id="{{ guide.slug }}"></div>
   <details>
     <summary>
       {% if guide_index %}
-        <a href="{{ guide_index.url | relative_url }}">{{ guide_title }}</a>
+        <a href="{{ guide_index.url | relative_url }}">{{ guide.title }}</a>
       {% else %}
-        {{ guide_title }}
+        {{ guide.title }}
       {% endif %}
     </summary>
 
-    {% capture ordering_path %}{{ guide }}/_ordering.md{% endcapture %}
-    {% assign ordering_page = sorted_pages | where: "path", ordering_path | first %}
-
-    {% if ordering_page and ordering_page.ordering %}
-      {% for raw_section in ordering_page.ordering %}
-        {% unless raw_section == "meta" %}
-          {% assign section_path = raw_section %}
-          {% if guide == "atc-guide" and raw_section == "radar" %}
-            {% assign section_path = "_radar" %}
-          {% endif %}
-
-          {% capture section_prefix %}{{ guide }}/{{ section_path }}/{% endcapture %}
+    {% if guide.sections %}
+      {% for section in guide.sections %}
+          {% capture section_prefix %}{{ guide.slug }}/{{ section.slug }}/{% endcapture %}
           {% assign section_pages = sorted_pages | where_exp: "item", "item.path contains section_prefix" | sort: "order" %}
 
           {% if section_pages.size > 0 %}
-            {% assign section_label = section_path | remove_first: "_" | replace: "-", " " | replace: ".-", ". " %}
-            <h3>{{ section_label }}</h3>
+            <h3>{{ section.title }}</h3>
             <ul>
               {% for doc in section_pages %}
                 {% assign filename = doc.path | split: "/" | last %}
@@ -81,10 +46,9 @@ permalink: /
               {% endfor %}
             </ul>
           {% endif %}
-        {% endunless %}
       {% endfor %}
     {% else %}
-      {% capture root_prefix %}{{ guide }}/{% endcapture %}
+      {% capture root_prefix %}{{ guide.slug }}/{% endcapture %}
       {% assign direct_pages = sorted_pages | where_exp: "item", "item.path contains root_prefix" | sort: "order" %}
       <ul>
         {% for doc in direct_pages %}

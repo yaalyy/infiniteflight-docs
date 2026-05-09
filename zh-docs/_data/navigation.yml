@@ -1,0 +1,118 @@
+guides:
+  - slug: getting-started-guide
+    title: 入门指南
+    sections:
+      - slug: atc-user-interface
+        title: ATC 用户界面
+      - slug: home-user-interface
+        title: 主页用户界面
+      - slug: installing-the-app
+        title: 安装应用
+      - slug: pilot-user-interface
+        title: 飞行员用户界面
+  - slug: flying-guide
+    title: 飞行指南
+    sections:
+      - slug: atc-communication
+        title: ATC 通信
+      - slug: expert-server
+        title: Expert Server
+      - slug: on-the-ground
+        title: 地面操作
+      - slug: take-off-to-cruise
+        title: 起飞到巡航
+      - slug: descent-to-landing
+        title: 下降到着陆
+  - slug: atc-guide
+    title: ATC 指南
+    sections:
+      - slug: ground
+        title: 地面
+      - slug: tower
+        title: 塔台
+      - slug: _radar
+        title: 雷达
+  - slug: atc-manual
+    title: ATC 手册
+    sections:
+      - slug: 1.-introduction
+        title: 1. 简介
+      - slug: 1a.-administration
+        title: 1A. 行政
+      - slug: 1b.-violations
+        title: 1B. 违规
+      - slug: 2.-ground
+        title: 2. 地面
+      - slug: 3.-tower
+        title: 3. 塔台
+      - slug: 4.-atis
+        title: 4. ATIS
+      - slug: 5.-airspace
+        title: 5. 空域
+      - slug: 6.-radar
+        title: 6. 雷达
+      - slug: 7.-recruitment-and-training
+        title: 7. 招募与培训
+      - slug: 7a.-trainers
+        title: 7A. 培训员
+      - slug: 7b.-testers
+        title: 7B. 测试员
+      - slug: 7c.-recruiters
+        title: 7C. 招募员
+      - slug: 7d.-supervisors
+        title: 7D. 监督员
+      - slug: 7e.-appeals
+        title: 7E. 申诉
+  - slug: developer-reference
+    title: 开发者参考
+    sections:
+      - slug: connect-api
+        title: Connect API
+      - slug: live-api
+        title: Live API
+  - slug: get-help
+    title: 获取帮助
+  - slug: scenario-editor-manual
+    title: 场景编辑器手册
+    sections:
+      - slug: overview
+        title: 概述
+      - slug: editor
+        title: 编辑器
+      - slug: uploads
+        title: 上传
+  - slug: scenery-editor-manual
+    title: 地景编辑器手册
+    sections:
+      - slug: 1.-introduction
+        title: 1. 简介
+      - slug: 1a.-administration
+        title: 1A. 行政
+      - slug: 2.-user-interface
+        title: 2. 用户界面
+      - slug: 3.-getting-started
+        title: 3. 入门
+      - slug: 4.-satellite-imagery
+        title: 4. 卫星影像
+      - slug: 5.-runways
+        title: 5. 跑道
+      - slug: 6.-pavements
+        title: 6. 铺装面
+      - slug: 7.-taxiways
+        title: 7. 滑行道
+      - slug: 8.-start-locations
+        title: 8. 起始位置
+      - slug: 9.-buildings-and-facades
+        title: 9. 建筑物与立面
+      - slug: 10.-objects
+        title: 10. 物体
+      - slug: 11.-airport-gates
+        title: 11. 机场机位
+      - slug: 12.-review-and-release
+        title: 12. 审核与发布
+      - slug: 12a.-reviewers
+        title: 12A. 审核员
+      - slug: 13.-summary
+        title: 13. 总结
+  - slug: legal
+    title: 法律
