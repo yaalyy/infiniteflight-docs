@@ -14,8 +14,10 @@ permalink: /
   快速跳转:
   {% for guide in guides %}
     {% capture guide_index_path %}{{ guide }}/index.md{% endcapture %}
+    {% capture guide_meta_path %}{{ guide }}/_meta.md{% endcapture %}
     {% assign guide_index = sorted_pages | where: "path", guide_index_path | first %}
-    {% assign guide_title = guide_index.title %}
+    {% assign guide_meta = sorted_pages | where: "path", guide_meta_path | first %}
+    {% assign guide_title = guide_meta.title | default: guide_index.title %}
     {% if guide_title == nil %}
       {% case guide %}
         {% when "legal" %}
@@ -30,8 +32,10 @@ permalink: /
 
 {% for guide in guides %}
   {% capture guide_index_path %}{{ guide }}/index.md{% endcapture %}
+  {% capture guide_meta_path %}{{ guide }}/_meta.md{% endcapture %}
   {% assign guide_index = sorted_pages | where: "path", guide_index_path | first %}
-  {% assign guide_title = guide_index.title %}
+  {% assign guide_meta = sorted_pages | where: "path", guide_meta_path | first %}
+  {% assign guide_title = guide_meta.title | default: guide_index.title %}
   {% if guide_title == nil %}
     {% case guide %}
       {% when "legal" %}
