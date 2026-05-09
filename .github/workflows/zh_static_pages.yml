@@ -33,6 +33,7 @@ jobs:
           mkdir -p ./site-output
           cp -R ./_site/. ./site-output/
           cp -R _images ./site-output/_images
+          touch ./site-output/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
