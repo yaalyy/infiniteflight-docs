@@ -23,13 +23,13 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Prepare site assets
-        run: cp -R _images zh-docs/_images
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./zh-docs
           destination: ./_site
+      - name: Copy static images to site output
+        run: cp -R _images ./_site/_images
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
